@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from uuid import UUID
+from routes import crop
 from models import User, Dataset, ApiResponse
 from crud import (
     create_user, get_user, update_user, delete_user,
@@ -7,9 +8,8 @@ from crud import (
 )
 
 app = FastAPI()
-
+app.include_router(crop.router)
 # User Routes
-
 @app.post("/users/", response_model=ApiResponse)
 def create_user_endpoint(user: User):
     create_user(user)
