@@ -1,8 +1,5 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
-*$py.class
-
 
 # Poetry
 poetry.lock
@@ -10,10 +7,8 @@ poetry.lock
 
 # Environment files
 .env
-.env.*
 
 
 # IDEs and editors
 .vscode/
-.idea/
 
