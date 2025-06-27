@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Poetry
+poetry.lock
+
+
+# Environment files
+.env
+
+
+# IDEs and editors
+.vscode/
+
