@@ -209,6 +209,7 @@ components:
         - uploadDate
         - isSpatial
         - isTemporal
+        - s3_location
       type: object
       properties:
         id:
@@ -238,6 +239,10 @@ components:
         isTemporal:
           type: boolean
           description: Whether the dataset has any temporal identifiers
+        s3_location:
+          type: string  
+          description: The S3 location where the dataset is stored
+          example: s3://bucket-name/path/to/dataset.csv
       xml:
         name: dataset
     User:

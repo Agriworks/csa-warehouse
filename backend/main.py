@@ -1,10 +1,11 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from uuid import UUID
 from models import User, Dataset, ApiResponse
 from crud import (
     create_user, get_user, update_user, delete_user,
     create_dataset, get_dataset, delete_dataset
 )
+from minio_service import generate_presigned_url
 
 app = FastAPI()
 
@@ -57,3 +58,8 @@ def delete_dataset_endpoint(dataset_id: int):
     if deleted == 0:
         raise HTTPException(status_code=404, detail="Dataset not found")
     return ApiResponse(code=200, type="success", message="Dataset deleted")
+
+@app.get("/generatePresignedURL")
+def get_presigned_url(filename: str = Query(...)):
+    url = generate_presigned_url(filename)
+    return {"upload_url": url} 
