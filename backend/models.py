@@ -1,4 +1,4 @@
-from typing import List, Optional, Union
+from typing import List, Optional, Union, Any 
 from uuid import UUID
 from datetime import datetime
 
@@ -60,3 +60,9 @@ class Error(BaseModel):
     """
     code: str = Field(..., description="Error code")
     message: str = Field(..., description="Error message")
+
+class CloudFunctionRequest(BaseModel):
+    func_name: str
+    param_values: List[Any]
+    param_types: List[str] 
+    return_type: str 
