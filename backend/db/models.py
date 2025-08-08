@@ -64,5 +64,5 @@ class Error(BaseModel):
 class CloudFunctionRequest(BaseModel):
     func_name: str
     param_values: List[Any]
-    param_types: List[str] 
-    return_type: str 
+    # param_types: List[str] 
+    # return_type: str 

@@ -1,6 +1,6 @@
 from uuid import UUID
-from models import User, Dataset
-from database import users_collection, datasets_collection
+from db.models import User, Dataset
+from db.database import users_collection, datasets_collection
 
 
 def user_to_dict(user: User):

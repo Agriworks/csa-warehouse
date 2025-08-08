@@ -190,6 +190,118 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /generatePresignedURL:
+    get:
+      tags:
+        - dataset
+      summary: Generate a presigned URL for S3 uploading.
+      description: Generate a presigned URL to upload a file to S3.
+      operationId: generatePresignedUrl
+      parameters:
+        - name: filename
+          in: query 
+          description: The name of the file to upload
+          required: true
+          schema:
+            type: string 
+      responses:
+        '200':
+          description: Presigned URL generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  upload_url:
+                    type: string
+                    format: uri
+        '400':
+          description: Invalid filename supplied
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"       
+  /submit-task:
+    post:
+      tags:
+        - dataset
+      summary: Submit a task for execution.
+      description: Submit a task to be executed by the cloud function.
+      operationId: submitTask
+      requestBody:
+        description: Task submission request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                func_name:
+                  type: string
+                param_values:
+                  type: array
+                  items:
+                    type: string
+                param_types:
+                  type: array
+                  items:
+                    type: string
+                return_type:
+                  type: string
+              required:
+                - func_name
+                - param_values
+                - param_types
+                - return_type
+      responses:
+        '200':
+          description: Task submitted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "running"
+                  exec_id:
+                    type: string
+                    example: "123e4567-e89b-12d3-a456-426614174000"
+        '400':
+          description: Invalid input data
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error" 
+  /task-status/{exec_id}:
+    get:
+      tags:
+        - dataset
+      summary: Get the status of a submitted task.
+      description: Retrieve the status of a task using its execution ID.
+      operationId: getTaskStatus
+      parameters:
+        - name: exec_id
+          in: path
+          description: The execution ID of the task to check status for
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Task status retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "running"  
 components:
   schemas:
     Tag:
@@ -209,6 +321,7 @@ components:
         - uploadDate
         - isSpatial
         - isTemporal
+        - s3_location
       type: object
       properties:
         id:
@@ -238,6 +351,10 @@ components:
         isTemporal:
           type: boolean
           description: Whether the dataset has any temporal identifiers
+        s3_location:
+          type: string  
+          description: The S3 location where the dataset is stored
+          example: s3://bucket-name/path/to/dataset.csv
       xml:
         name: dataset
     User:

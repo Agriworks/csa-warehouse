@@ -1,15 +1,29 @@
-from fastapi import FastAPI, HTTPException, Query
 from uuid import UUID
-from models import User, Dataset, ApiResponse, CloudFunctionRequest
-from crud import (
+from io import BytesIO
+from base64 import b64decode
+from fastapi import FastAPI, HTTPException, Query, UploadFile, File, Form
+from app.schemas.models import User, Dataset, ApiResponse, CloudFunctionRequest, DatasetResponse
+from app.db.crud import (
     create_user, get_user, update_user, delete_user,
     create_dataset, get_dataset, delete_dataset
 )
-from minio_service import generate_presigned_url
-from cloud_functions.rpc_server import introspection, custprocess
-from cloud_functions.api.executor import submit_task, get_task_status
+from app.utils.file_utils import * 
+from app.services.storage.minio_service import get_minio_service
+from services.cloud_functions.server import introspection, custprocess
+from services.cloud_functions.executor import submit_task, get_task_status
+from app.warehouse.task_manager import TaskManager 
+from app.services.cloud_functions.ETL_function import clean_csv 
+from app.services.storage.minio_service import MinioStorageService
+from app.api.endpoints.pipeline import run_router
+
+# Register the tasks 
+import app.warehouse.register_tasks 
 
 app = FastAPI()
+app.include_router(run_router) 
+
+# Initialize the Task Manager
+task_manager = TaskManager()
 
 # User Routes
 
@@ -63,7 +77,8 @@ def delete_dataset_endpoint(dataset_id: int):
 
 @app.get("/generatePresignedURL")
 def get_presigned_url(filename: str = Query(...)):
-    url = generate_presigned_url(filename)
+    minio_service = get_minio_service() 
+    url = minio_service.generate_presigned_url(filename)
     return {"upload_url": url} 
 
 # Test Endpoint that don't run on a thread
@@ -83,18 +98,16 @@ async def invoke_function(request: CloudFunctionRequest):
     except Exception as e:
         raise HTTPException(status_code = 500, detail = str(e))
     
-@app.post("/submit-task") 
+@app.post("/submit-task")
 async def submit_task_endpoint(request: CloudFunctionRequest):
     try:
-        exec_id = submit_task(
-            func_name = request.func_name,
-            param_values = request.param_values,
-            param_types = request.param_types,
-            return_type = request.return_type
+        exec_id = await task_manager.execute_task(
+            task_name = request.func_name,
+            params = request.param_values 
         )
-        return {"status": "running", "exec_id": exec_id}
-    except Exception as e:
-        raise HTTPException(status_code = 500, detail = str(e))
+        return {"status": "running", "exec_id": exec_id} 
+    except ValueError as ve:
+        raise HTTPException(status_code = 400, detail = str(ve)) 
     
 @app.get("/task-status/{exec_id}") 
 def get_task_status_endpoint(exec_id: str):
