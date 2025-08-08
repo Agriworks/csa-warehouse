@@ -14,3 +14,6 @@ db = client["fastapi_db"]
 
 users_collection = db["users"]
 datasets_collection = db["datasets"] 
+
+# New collection for pipeline status
+pipeline_status = db["pipelineStatus"] 

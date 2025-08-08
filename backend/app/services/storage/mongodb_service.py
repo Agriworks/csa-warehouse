@@ -4,10 +4,12 @@ import pandas as pd
 from typing import List
 from app.db.database import datasets_collection
 
-def store_to_mongodb(dataset_id: str, dataset_df: List[dict]) -> dict:
+def store_to_mongodb(dataset_id: str, user_id: str, username: str, dataset_df: List[dict]) -> dict:
 
     wrapper_doc = {
-        "dataset_id": dataset_id,
+        "_id": dataset_id,
+        "user_id": user_id,
+        "username": username,
         "ingested_at": datetime.now(timezone.utc).isoformat(),
         "record_count": len(dataset_df),
         "data": dataset_df

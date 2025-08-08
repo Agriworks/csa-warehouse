@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from app.utils.erp import pull_dataset
-from app.schemas.models import RunPipeline
+from app.schemas.models import RunPipeline, PipelineStatus
 from app.services.storage.mongodb_service import store_to_mongodb
 from app.services.tasks.task_executor import submit_task, get_task_status
 
@@ -18,13 +18,13 @@ async def run_pipeline(request: RunPipeline):
 
 @run_router.post("/run-dataset")
 def run_dataset(request: RunPipeline):
-    result, exec_id = submit_task(request.dataset_id)
+    result, exec_id = submit_task(request.dataset_id, request.user_id, request.username) 
     return {
-        "status": "submitted",
+        "Request Status": "submitted",
         "execution_id": exec_id,
         "result": result
     }
 
-@run_router.get("/pipelineStatus/{exec_id}")
-def get_pipeline_status(exec_id):
-    return get_task_status(exec_id)
+@run_router.post("/pipelineStatus")
+def get_pipeline_status(request: PipelineStatus):
+    return get_task_status(request.dataset_id, request.user_id) 

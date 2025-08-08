@@ -16,7 +16,10 @@ dependencies = [
     "pymongo (>=4.13.2,<5.0.0)",
     "python-dotenv (>=1.1.1,<2.0.0)",
     "minio",
-    "pandas"
+    "pandas", 
+    "pydantic-settings",
+    "python-multipart",
+    "csa-erp-client @ git+https://github.com/Agriworks/erpnext_client.git"
 ]
 
 [tool.poetry]

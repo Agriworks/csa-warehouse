@@ -73,4 +73,9 @@ class CloudFunctionRequest(BaseModel):
 
 class RunPipeline(BaseModel):
     dataset_id: str 
-    user_id: Optional[str] = None
+    user_id: str 
+    username: str 
+
+class PipelineStatus(BaseModel):
+    dataset_id: str 
+    user_id: str 
