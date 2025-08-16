@@ -17,10 +17,7 @@ export default function RunLogs() {
         </div>
         <h4 className="text-lg font-semibold mb-4">Technical Commands</h4>
         <div className="space-y-4">
-          <PipelineItem number={1} />
-          <PipelineItem number={2} />
-          <PipelineItem number={3} />
-          <PipelineItem number={4} />
+          <PipelineItem datasetId="Issue" />
         </div>
       </div>
     </ContentLayout>

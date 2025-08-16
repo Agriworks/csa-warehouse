@@ -22,12 +22,13 @@ export function DatasetCard({
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleOpen = async () => {
+  const handleView = async () => {
     setIsLoading(true)
     try {
       await router.push(`/datastore/browse/${encodeURIComponent(title)}`)
     } catch (error) {
       console.error('Navigation error:', error)
+    } finally {
       setIsLoading(false)
     }
   }
@@ -59,20 +60,29 @@ export function DatasetCard({
             </p>
           </div>
         </div>
-        <Button 
-          className="w-full mt-4" 
-          onClick={handleOpen}
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <>
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              Loading...
-            </>
-          ) : (
-            'View'
-          )}
-        </Button>
+        <div className="flex gap-3 mt-6">
+          <Button 
+            variant="outline"
+            className="flex-1 border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
+            disabled
+          >
+            Edit
+          </Button>
+          <Button 
+            className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
+            onClick={handleView}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                Loading...
+              </>
+            ) : (
+              'View'
+            )}
+          </Button>
+        </div>
       </CardContent>
     </Card>
   )

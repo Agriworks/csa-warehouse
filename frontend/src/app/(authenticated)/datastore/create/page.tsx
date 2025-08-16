@@ -23,12 +23,14 @@ import { TagInput } from '@/app/(authenticated)/datastore/create/tag-input'
 import { DatasetConfigurationDialog, DatasetConfigFormData } from '@/app/(authenticated)/datastore/create/dataset-cofig-dialogue'
 import { useToast } from '@/components/hooks/use-toast'
 import { useSession } from 'next-auth/react'
+import { SearchDatatype } from '@/app/(authenticated)/datastore/create/search-datatype'
 
 // Zod schemas for each section
 const datasetInformationSchema = z.object({
   name: z.string().min(1, "Dataset name is required"),
   description: z.string().optional(),
   permission: z.enum(["public", "private"]),
+  category: z.string().optional(),
   tags: z.array(z.string()).optional(),
 })
 
@@ -259,6 +261,29 @@ export default function Create() {
                             <SelectItem value="private">Private</SelectItem>
                           </SelectContent>
                         </Select>
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <FormField
+                  control={form.control}
+                  name="category"
+                  render={({field}) => (
+                    <FormItem>
+                      <FormLabel>Dataset Type</FormLabel>
+                      <FormControl>
+                        <SearchDatatype
+                          options={[]}
+                          value={field.value}
+                          onValueChange={field.onChange}
+                          placeholder="Implement soon"
+                          searchPlaceholder="Search categories..."
+                          emptyMessage="No categories found."
+                          disabled={true}
+                        />
                       </FormControl>
                     </FormItem>
                   )}

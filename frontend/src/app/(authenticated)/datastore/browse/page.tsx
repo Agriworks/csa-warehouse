@@ -1,40 +1,40 @@
 'use client'
 import { Input } from '@/components/ui/input'
-import { Search } from 'lucide-react'
+import { Search, Loader2 } from 'lucide-react'
 import { DatasetCard } from './datasetcard'
 import { ContentLayout } from '@/components/admin-panel/content-layout'
+import { getDatasetsGetDatasetsGet } from '@/lib/hey-api/client/sdk.gen'
+import { useState, useEffect } from 'react'
+import { Dataset, GetDatasetsResponse } from '@/lib/hey-api/client/types.gen'
 
- export default function Browse() {
-  const datasets = [
-    {
-      title: 'Crop Yield Dataset',
-      description: 'Comprehensive agricultural yield data covering major crops including corn, wheat, soybeans, and rice across different regions and growing seasons. This dataset includes soil quality metrics, weather conditions, irrigation data, and farming practices that influence crop productivity. Essential for precision agriculture and yield prediction models.',
-      uploaderName: 'Alice Smith',
-      uploaderEmail: 'alice@example.com',
-      uploadDate: '2023-05-01T10:30:00Z',
-    },
-    {
-      title: 'Climate Dataset',
-      description: 'Climate data from 1900 to present covering temperature variations, precipitation patterns, atmospheric pressure, humidity levels, and wind speed measurements across different geographical regions. This extensive dataset supports climate change research and weather forecasting models.',
-      uploaderName: 'Bob Johnson',
-      uploaderEmail: 'bob@example.com',
-      uploadDate: '2023-04-15T14:00:00Z',
-    },
-    {
-      title: 'Land Use Dataset',
-      description: 'Land use patterns and changes over time including urban development, agricultural expansion, forest cover changes, and infrastructure development. This dataset provides valuable insights into environmental impact assessment and sustainable development planning.',
-      uploaderName: 'Carol Lee',
-      uploaderEmail: 'carol@example.com',
-      uploadDate: '2023-03-20T09:15:00Z',
-    },
-    {
-      title: 'Agriculture Dataset',
-      description: 'Agricultural production and yield statistics covering crop types, harvest volumes, soil quality metrics, irrigation patterns, and farming techniques across different regions and seasons. This comprehensive dataset supports agricultural research and food security analysis.',
-      uploaderName: 'David Kim',
-      uploaderEmail: 'david@example.com',
-      uploadDate: '2023-02-10T16:45:00Z',
-    },
-  ]
+export default function Browse() {
+  const [datasets, setDatasets] = useState<Dataset[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchDatasets = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+        
+        const response = await getDatasetsGetDatasetsGet()
+        if (response.data) {
+          const responseData: GetDatasetsResponse = response.data
+          setDatasets(responseData.data)
+        } else {
+          throw new Error('Failed to fetch datasets')
+        }
+      } catch (err) {
+        console.error('Error fetching datasets:', err)
+        setError('Failed to load datasets. Please try again later.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchDatasets()
+  }, [])
 
   return (
     <ContentLayout title="Browse">
@@ -47,18 +47,28 @@ import { ContentLayout } from '@/components/admin-panel/content-layout'
             className="pl-9"
           />
         </div>
+        {loading && (
+          <div className="flex items-center justify-center h-64">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          </div>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          {datasets.map((dataset, index) => (
+          {datasets.map((dataset) => (
             <DatasetCard
-              key={index}
-              title={dataset.title}
+              key={dataset.id}
+              title={dataset.datasetname}
               description={dataset.description}
-              uploaderName={dataset.uploaderName}
-              uploaderEmail={dataset.uploaderEmail}
-              uploadDate={dataset.uploadDate}
+              user_id={dataset.user_id}
+              username={dataset.user_name}
+              ingestedAt={dataset.ingested_date}
             />
           ))}
         </div>
+        {datasets.length === 0 && !loading && !error && (
+          <div className="flex items-center justify-center h-64">
+            <div className="text-muted-foreground">No datasets found.</div>
+          </div>
+        )}
       </div>
     </ContentLayout>
   )

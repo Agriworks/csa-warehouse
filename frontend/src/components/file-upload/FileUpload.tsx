@@ -202,7 +202,7 @@ export const FileUploader = forwardRef<
         console.error("Upload error:", error);
         throw error;
       }
-    }, [authToken]);
+    }, []);
 
     const onDrop = useCallback(
       async (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
