@@ -23,12 +23,15 @@ import { TagInput } from '@/app/(authenticated)/datastore/create/tag-input'
 import { DatasetConfigurationDialog, DatasetConfigFormData } from '@/app/(authenticated)/datastore/create/dataset-cofig-dialogue'
 import { useToast } from '@/components/hooks/use-toast'
 import { useSession } from 'next-auth/react'
+import { SearchDatatype } from '@/app/(authenticated)/datastore/create/search-datatype'
+import { createDatasetInformationEndpointCreateDatasetInformationPost } from '@/lib/hey-api/client/sdk.gen'
 
 // Zod schemas for each section
 const datasetInformationSchema = z.object({
   name: z.string().min(1, "Dataset name is required"),
   description: z.string().optional(),
   permission: z.enum(["public", "private"]),
+  category: z.string().optional(),
   tags: z.array(z.string()).optional(),
 })
 
@@ -36,7 +39,7 @@ const datasetInformationSchema = z.object({
 type CompleteFormData = {
   datasetInformation: z.infer<typeof datasetInformationSchema>
   dataSelection: {
-    file_id: number
+    file_id: string
   }
   configuration?: {
     isSpatial: boolean
@@ -55,10 +58,15 @@ type CompleteFormData = {
 
 export default function Create() {
   const [files, setFiles] = useState<File[] | null>(null)
-  const [fileUrls, setFileUrls] = useState<number[]>([]);
+  const [fileUrls, setFileUrls] = useState<string[]>([]);
   const [isConfigDialogOpen, setIsConfigDialogOpen] = useState(false)
   const [isFormValid, setIsFormValid] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [uploadedFileData, setUploadedFileData] = useState<{
+    dataset_id: string;
+    file_id: string;
+    columns: string[];
+  } | null>(null)
   const { toast } = useToast()
   const { data: session } = useSession()
 
@@ -100,87 +108,97 @@ export default function Create() {
     setIsSubmitting(true)
     
     try {
+      // Validate that we have uploaded file data
+      if (!uploadedFileData) {
+        toast({
+          title: "Error",
+          description: "File upload data not available. Please upload the file again.",
+          variant: "destructive",
+        });
+        return;
+      }
+     
       const completeData: CompleteFormData = {
         datasetInformation: data,
         dataSelection: {
-          file_id: fileUrls[0] || 0,
+          file_id: fileUrls[0] || "",
         },
         configuration: configData,
       };
       
       console.log('Complete form data:', completeData);
+      console.log('Uploaded file data:', uploadedFileData);
+      console.log('CSV columns:', uploadedFileData.columns);
       
       // Prepare the dataset object for the API
       const datasetPayload: {
-        title: string
+        dataset_name: string
         description: string
-        uploader: {
-          id: string
-          username: string
-          firstName: string
-          lastName: string
-          email: string
-          organisation: string
-        }
-        uploadDate: string
-        tags: {
-          name: string
-        }[]
-        isSpatial: boolean
-        isTemporal: boolean
+        permission: string
+        dataset_type: string
+        tags: string[]
+        dataset_id: string
+        file_id: string
+        is_temporal: boolean
+        is_spatial: boolean
+        pulled_from_pipeline: boolean
+        user_email: string
+        user_name: string
+        user_id: string
+        pipeline_id: string | null
       } = {
-        title: data.name,
+        dataset_name: data.name,
         description: data.description || "",
-        uploader: {
-          id: "",
-          username: session?.user?.name || "",
-          firstName: "",
-          lastName: "",
-          email: session?.user?.email || "",
-          organisation: ""
-        },
-        uploadDate: new Date().toISOString(),
-        tags: data.tags?.map(tag => ({ name: tag })) || [],
-        isSpatial: configData.isSpatial,
-        isTemporal: configData.isTemporal,
+        permission: data.permission,
+        dataset_type: data.category || "general",
+        tags: data.tags || [],
+        dataset_id: uploadedFileData.dataset_id,
+        file_id: uploadedFileData.file_id,
+        is_temporal: configData.isTemporal,
+        is_spatial: configData.isSpatial,
+        pulled_from_pipeline: false,
+        user_email: session?.user?.email || "",
+        user_name: session?.user?.name || "",
+        user_id: session?.user?.email || "", // Using email as user_id since id is not available
+        pipeline_id: null,
       }
       console.log('Dataset payload:', datasetPayload);
 
       // Make the API call
-      // const response = await addDataset({
-      //   body: datasetPayload
-      // });
-      // console.log('Response:', response);
+      const response = await createDatasetInformationEndpointCreateDatasetInformationPost({
+        body: datasetPayload
+      });
+      console.log('Response:', response);
 
-      // if (response.data) {
-      //   toast({
-      //     title: "Success!",
-      //     description: "Dataset created successfully.",
-      //   });
+      if (response.data && response.data.status === 'success') {
+        toast({
+          title: "Success!",
+          description: response.data.message || "Dataset created successfully.",
+        });
         
-      //   // Reset the form
-      //   form.reset({
-      //     name: "",
-      //     description: "",
-      //     permission: "public",
-      //     tags: [],
-      //   });
-      //   setFiles(null);
-      //   setFileUrls([]);
-      //   setIsConfigDialogOpen(false);
-      // } else {
-      //   console.error('API Error:', response.error);
-      //   toast({
-      //     title: "Error",
-      //     description: "Failed to create dataset. Please try again.",
-      //     variant: "destructive",
-      //   });
-      // }
+        // Reset the form
+        form.reset({
+          name: "",
+          description: "",
+          permission: "public",
+          tags: [],
+        });
+        setFiles(null);
+        setFileUrls([]);
+        setUploadedFileData(null);
+        setIsConfigDialogOpen(false);
+      } else {
+        console.error('API Error:', response.error);
+        toast({
+          title: "Error",
+          description: response.data?.message || "Failed to create dataset. Please try again.",
+          variant: "destructive",
+        });
+      }
     } catch (error) {
       console.error('Error creating dataset:', error);
       toast({
         title: "Error",
-        description: "Failed to create dataset. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -268,6 +286,29 @@ export default function Create() {
               <div className="space-y-2">
                 <FormField
                   control={form.control}
+                  name="category"
+                  render={({field}) => (
+                    <FormItem>
+                      <FormLabel>Dataset Type</FormLabel>
+                      <FormControl>
+                        <SearchDatatype
+                          options={[]}
+                          value={field.value}
+                          onValueChange={field.onChange}
+                          placeholder="Implement soon"
+                          searchPlaceholder="Search categories..."
+                          emptyMessage="No categories found."
+                          disabled={true}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <FormField
+                  control={form.control}
                   name="tags"
                   render={({field}) => (
                     <FormItem>
@@ -308,8 +349,11 @@ export default function Create() {
                       setFiles(value)
                     }
                   }
-                  onUploadComplete={(urls) => {
+                  onUploadComplete={(urls, fileData) => {
                     setFileUrls(urls);
+                    if (fileData) {
+                      setUploadedFileData(fileData);
+                    }
                   }}
                   dropzoneOptions={dropZoneConfig}
                   className="relative bg-background rounded-lg p-2"
@@ -360,7 +404,7 @@ export default function Create() {
             onClick={handleConfigureDataset}
             type="button"
           >
-            Configure Dataset
+            {isSubmitting ? "Creating Dataset..." : "Configure Dataset"}
           </Button>
           </CardContent>
           </Card>
@@ -372,6 +416,8 @@ export default function Create() {
           onOpenChange={setIsConfigDialogOpen}
           onComplete={handleConfigComplete}
           onSubmitForm={handleSubmitForm}
+          isSubmitting={isSubmitting}
+          columns={uploadedFileData?.columns || []}
         />
     </ContentLayout>
   )

@@ -4,6 +4,7 @@ import pandas as pd
 from dotenv import load_dotenv
 
 from app.config.logging import get_logger, setup_logging
+from app.config.pipeline_mapping import get_dataset_name_for_pipeline
 from erp_client.erp_next_client import ERPNextClient
 
 setup_logging()
@@ -28,13 +29,17 @@ def get_dataset_with_fields(client: ERPNextClient, dataset_id: str, fields: list
     records = response.json().get("data", [])
     return pd.DataFrame(records)
 
-def pull_dataset(dataset_name: str) -> pd.DataFrame:
+def pull_dataset(pipeline_id: str) -> pd.DataFrame:
     erp_uri = os.getenv("ERP_URI")
     erp_username = os.getenv("ERP_USERNAME")
     erp_password = os.getenv("ERP_PASSWORD")
 
     if not all([erp_uri, erp_username, erp_password]):
         raise ValueError("Missing required environment variables: ERP_URI, ERP_USERNAME, ERP_PASSWORD")
+
+    # Map pipeline_id to actual dataset name
+    dataset_name = get_dataset_name_for_pipeline(pipeline_id)
+    logger.info(f"Mapped pipeline_id '{pipeline_id}' to dataset name '{dataset_name}'")
 
     try:
         logger.info(f"Connecting to ERP instance: {erp_uri}")
@@ -44,18 +49,22 @@ def pull_dataset(dataset_name: str) -> pd.DataFrame:
         logger.info("Successfully logged in to ERP")
 
         logger.info(f"Fetching dataset: {dataset_name}")
-        dataset = client.get_dataset(dataset_name)
-        logger.info(f"Dataset contents:\n{dataset.head()}")
+        try:
+            dataset = client.get_dataset(dataset_name)
+            logger.info(f"Dataset contents:\n{dataset.head()}")
 
-        logger.info("Syncing dataset with selected fields from index 0...")
-        sync_data = get_dataset_with_fields(client, dataset_name)
-        logger.info(f"Synced data:\n{sync_data.head()}")
+            logger.info("Syncing dataset with selected fields from index 0...")
+            sync_data = get_dataset_with_fields(client, dataset_name)
+            logger.info(f"Synced data:\n{sync_data.head()}")
 
-        # logger.info("Converting the data into json")
-        # sync_data = sync_data.to_json(orient = "records")
-        # sync_data = json.dumps(sync_data, indent = 2)
-
-        return sync_data
+            return sync_data
+        except Exception as dataset_error:
+            if "404" in str(dataset_error) or "NOT FOUND" in str(dataset_error):
+                logger.warning(f"Dataset '{dataset_name}' not found in ERP system. This might be expected for some datasets.")
+                # Return empty DataFrame instead of raising error
+                return pd.DataFrame()
+            else:
+                raise dataset_error
 
     except Exception as e:
         logger.exception("Error while pulling dataset")

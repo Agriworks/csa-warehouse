@@ -3,6 +3,12 @@
 
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { 
+  getPresignedUrlGeneratePresignedUrlGet,
+  extractCsvDataExtractCsvDataPost,
+  createFileEndpointCreateFilePost
+} from "@/lib/hey-api/client/sdk.gen";
+import { CreateFileResponse, ExtractCsvDataResponse } from "@/lib/hey-api/client/types.gen";
 import React, {
   Dispatch,
   SetStateAction,
@@ -48,7 +54,11 @@ type FileUploaderProps = {
   value: File[] | null;
   reSelect?: boolean;
   onValueChange: (value: File[] | null) => void;
-  onUploadComplete?: (urls: number[]) => void;
+  onUploadComplete?: (urls: string[], fileData?: {
+    dataset_id: string;
+    file_id: string;
+    columns: string[];
+  }) => void;
   dropzoneOptions: DropzoneOptions;
   orientation?: "horizontal" | "vertical";
   authToken: string;
@@ -144,65 +154,88 @@ export const FileUploader = forwardRef<
         const uniqueFileName = `${fileNameWithoutExt}_${timestamp}.${fileExt}`;
 
         // Get presigned URL using SDK
-        // const presignedResponse = await createNimbusFileUploadPresignedUrl({
-        //   body: {
-        //     objectKey: uniqueFileName,
-        //   },
-        //   headers: {
-        //     Authorization: `Bearer ${authToken}`,
-        //   },
-        // });
-        // console.log("Presigned response:", presignedResponse);
+        const presignedResponse = await getPresignedUrlGeneratePresignedUrlGet({
+          query: {
+            filename: uniqueFileName,
+          },
+        });
+        console.log("Presigned response:", presignedResponse);
 
-        // if (presignedResponse.error) {
-        //   throw new Error("Failed to get presigned URL");
-        // }
+        if (presignedResponse.error) {
+          throw new Error("Failed to get presigned URL");
+        }
 
-        // const presignedUrl = presignedResponse.data;
-        // console.log("Presigned URL response:", presignedUrl);
-        // console.log("Type of presignedUrl:", typeof presignedUrl);
+        const presignedUrl = (presignedResponse.data as { upload_url: string })?.upload_url;
+        console.log("Presigned URL response:", presignedUrl);
+        console.log("Type of presignedUrl:", typeof presignedUrl);
 
-        // // Now upload the file using the presigned URL
-        // const uploadResponse = await fetch(presignedUrl as string, {
-        //   method: "PUT",
-        //   body: file,
-        //   headers: {
-        //     "Content-Type": file.type,
-        //   },
-        // });
+        // Now upload the file using the presigned URL
+        const uploadResponse = await fetch(presignedUrl as string, {
+          method: "PUT",
+          body: file,
+          headers: {
+            "Content-Type": file.type,
+          },
+        });
 
-        // if (!uploadResponse.ok) {
-        //   throw new Error("Upload failed");
-        // }
-        // console.log("Upload response:", uploadResponse);
+        if (!uploadResponse.ok) {
+          throw new Error("Upload failed");
+        }
+        console.log("Upload response:", uploadResponse);
 
-        // // Make the second API call with file metadata using SDK
-        // const recordResponse = await createNimbusFilePresignedUploadRecord({
-        //   body: {
-        //     fileExt,
-        //     fileName: uniqueFileName,
-        //     fileSize: file.size,
-        //     fileType: file.type,
-        //     fileURI: presignedUrl as string,
-        //   },
-        //   headers: {
-        //     Authorization: `Bearer ${authToken}`,
-        //   },
-        // });
+        // Extract CSV data after successful upload
+        const extractResponse = await extractCsvDataExtractCsvDataPost({
+          body: {
+            filename: uniqueFileName,
+            user_id: "",
+            username: "",
+          },
+        });
 
-        // if (recordResponse.error) {
-        //   throw new Error("Failed to record file metadata");
-        // }
+        if (extractResponse.error) {
+          throw new Error("Failed to extract CSV data");
+        }
 
-        // const recordData = recordResponse.data as NimbusFileRecord;
-        // console.log("Record data:", recordData);
-        // return recordData.fileId;
-        return 0;
+        console.log("CSV extraction response:", extractResponse.data);
+        
+        // Get the file URL (remove query parameters from presigned URL)
+        const fileUrl = presignedUrl.split("?")[0];
+
+        // Store file record in database and get file ID
+        const recordResponse = await createFileEndpointCreateFilePost({
+          body: {
+            file_ext: fileExt,
+            file_name: uniqueFileName,
+            file_size: file.size,
+            file_type: file.type,
+            file_url: fileUrl,
+          },
+        });
+
+        if (recordResponse.error) {
+          throw new Error("Failed to record file metadata");
+        }
+
+        const recordData = recordResponse.data as CreateFileResponse;
+        console.log("File record data:", recordData);
+        
+        // Extract dataset_id and columns from the CSV extraction response
+        const extractData = extractResponse.data as ExtractCsvDataResponse;
+        const dataset_id = extractData.data?.dataset_id as string || "";
+        const columns = extractData.data?.columns as string[] || [];
+        const file_id = recordData?.data?.id || "";
+        
+        // Return both the file ID and the extracted data
+        return {
+          file_id,
+          dataset_id,
+          columns,
+        };
       } catch (error) {
         console.error("Upload error:", error);
         throw error;
       }
-    }, [authToken]);
+    }, []);
 
     const onDrop = useCallback(
       async (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
@@ -240,13 +273,13 @@ export const FileUploader = forwardRef<
           try {
             const uploadPromises = newValues.map(async (file, index) => {
               try {
-                const url = await uploadFile(file);
+                const fileData = await uploadFile(file);
                 setUploadStatus((prev) =>
                   prev.map((status, i) =>
                     i === index ? { ...status, status: "success" } : status,
                   ),
                 );
-                return url;
+                return fileData;
               } catch (error) {
                 setUploadStatus((prev) =>
                   prev.map((status, i) =>
@@ -259,12 +292,18 @@ export const FileUploader = forwardRef<
               }
             });
 
-            const urls = await Promise.all(uploadPromises);
-            // Filter out any undefined values and ensure only numbers are passed
-            const validUrls = urls.filter(
-              (url: number): url is number => url !== undefined,
+            const fileDataArray = await Promise.all(uploadPromises);
+            // Filter out any undefined values and extract URLs and file data
+            const validFileData = fileDataArray.filter(
+              (data): data is { file_id: string; dataset_id: string; columns: string[] } => 
+                data !== undefined && data.file_id !== undefined && data.file_id !== "",
             );
-            onUploadComplete(validUrls);
+            
+            // Extract URLs for backward compatibility
+            const urls = validFileData.map(data => data.file_id);
+            
+            // Pass both URLs and file data to the callback
+            onUploadComplete(urls, validFileData[0]); // For single file upload, pass the first file data
           } catch (error) {
             console.error("Upload failed:", error);
             toast.error("Some files failed to upload");

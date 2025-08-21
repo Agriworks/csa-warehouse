@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useSidebar } from "@/components/hooks/use-sidebar";
 import { useStore } from "@/components/hooks/use-store";
-import { LayoutGrid } from "lucide-react";
+import { Home } from "lucide-react";
 
 export function CustomSidebar() {
   const sidebar = useStore(useSidebar, (x) => x);
@@ -32,7 +32,7 @@ export function CustomSidebar() {
           )}
           variant="ghost"
         >
-          <LayoutGrid className="w-6 h-6 mr-1" />
+          <Home className="w-6 h-6 mr-1" />
             <h1
               className={cn(
                 "font-bold text-lg whitespace-nowrap transition-[transform,opacity,display] ease-in-out duration-300",

@@ -7,6 +7,7 @@ import {
     Workflow,
     Info,
     HelpCircle,
+    Grid
   } from "lucide-react";
   
   type Submenu = {
@@ -33,6 +34,11 @@ import {
       {
         groupLabel: "",
         menus: [
+            {
+                href: "/dashboard",
+                label: "Dashboard",
+                icon: Grid,
+            },
             {
                 href: "/datastore",
                 label: "Data Store",

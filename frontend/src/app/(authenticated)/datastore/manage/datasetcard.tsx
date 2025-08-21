@@ -9,29 +9,30 @@ export function DatasetCard({
   dataset_id,
   dataset_name,
   description,
-  pulled_from_pipeline,
-  username,
   useremail,
+  username,
   updated_at,
+  pulled_from_pipeline,
   
 }: {
   dataset_id: string
   dataset_name: string
-  description: string
-  pulled_from_pipeline: boolean
-  username: string
+  description: string | null | undefined
   useremail: string
+  username: string
   updated_at: string
+  pulled_from_pipeline: boolean
 }) {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleOpen = async () => {
+  const handleView = async () => {
     setIsLoading(true)
     try {
       await router.push(`/datastore/browse/${encodeURIComponent(dataset_id)}`)
     } catch (error) {
       console.error('Navigation error:', error)
+    } finally {
       setIsLoading(false)
     }
   }
@@ -63,20 +64,29 @@ export function DatasetCard({
             </p>
           </div>
         </div>
-        <Button 
-          className="w-full mt-4" 
-          onClick={handleOpen}
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <>
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              Loading...
-            </>
-          ) : (
-            'View'
-          )}
-        </Button>
+        <div className="flex gap-3 mt-6">
+          <Button 
+            variant="outline"
+            className="flex-1 border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
+            disabled
+          >
+            Edit
+          </Button>
+          <Button 
+            className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
+            onClick={handleView}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                Loading...
+              </>
+            ) : (
+              'View'
+            )}
+          </Button>
+        </div>
       </CardContent>
     </Card>
   )
