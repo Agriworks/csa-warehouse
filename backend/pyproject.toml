@@ -7,7 +7,7 @@ authors = [
     {name = "Abhigna Revuru",email = "21285441+abhignarevuru@users.noreply.github.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.9,<3.13"
+requires-python = ">=3.10,<3.13"
 dependencies = [
     "fastapi (>=0.115.13,<0.116.0)",
     "uvicorn (>=0.34.3,<0.35.0)",
@@ -23,6 +23,9 @@ dependencies = [
     "mangum",
     "boto3",
     "dnspython",
+    "streamlit (>=1.50.0,<2.0.0)",
+    "plotly (>=6.3.1,<7.0.0)",
+    "streamlit-shadcn-ui (>=0.1.19,<0.2.0)",
 ]
 
 [tool.poetry]
