@@ -7,11 +7,9 @@ from botocore.client import Config
 from app.config.aws_settings import get_aws_settings
 from .base_storage import BaseStorage
 
-aws_settings = get_aws_settings()
-
-
 class S3StorageService(BaseStorage):
     def __init__(self):
+        aws_settings = get_aws_settings()
         self.client = boto3.client(
             "s3",
             region_name=aws_settings.aws_region,

@@ -1,0 +1,541 @@
+coordinator_name,district,date,type_of_activity,planned_activities,actual_activities,total_score
+Jayanna J,Guntur,01-08-2024,Field Visit,11,15,185
+Jayanna J,Guntur,01-08-2024,Farmer Meeting,14,21,253
+Jayanna J,Guntur,01-08-2024,Training Session,12,17,209
+Jayanna J,Guntur,01-08-2024,Survey,18,26,316
+Jayanna J,Guntur,01-08-2024,Documentation,16,23,276
+Venkatarao Pasala,Krishna,01-08-2024,Field Visit,11,3,37
+Venkatarao Pasala,Krishna,01-08-2024,Farmer Meeting,18,10,120
+Venkatarao Pasala,Krishna,01-08-2024,Training Session,18,7,89
+Venkatarao Pasala,Krishna,01-08-2024,Survey,18,9,109
+Venkatarao Pasala,Krishna,01-08-2024,Documentation,17,9,110
+Giridhar R,Prakasam,01-08-2024,Field Visit,10,11,137
+Giridhar R,Prakasam,01-08-2024,Farmer Meeting,16,19,230
+Giridhar R,Prakasam,01-08-2024,Training Session,12,13,158
+Giridhar R,Prakasam,01-08-2024,Survey,11,11,135
+Giridhar R,Prakasam,01-08-2024,Documentation,11,13,158
+P Sivanjuna Reddy,Nellore,01-08-2024,Field Visit,14,13,161
+P Sivanjuna Reddy,Nellore,01-08-2024,Farmer Meeting,17,20,240
+P Sivanjuna Reddy,Nellore,01-08-2024,Training Session,16,15,184
+P Sivanjuna Reddy,Nellore,01-08-2024,Survey,14,17,206
+P Sivanjuna Reddy,Nellore,01-08-2024,Documentation,13,12,144
+Anusha K,Kadapa,01-08-2024,Field Visit,13,7,84
+Anusha K,Kadapa,01-08-2024,Farmer Meeting,13,5,63
+Anusha K,Kadapa,01-08-2024,Training Session,14,8,101
+Anusha K,Kadapa,01-08-2024,Survey,15,7,86
+Anusha K,Kadapa,01-08-2024,Documentation,15,7,89
+Bhaskar M. D.,Guntur,01-08-2024,Field Visit,14,16,196
+Bhaskar M. D.,Guntur,01-08-2024,Farmer Meeting,12,18,221
+Bhaskar M. D.,Guntur,01-08-2024,Training Session,13,16,195
+Bhaskar M. D.,Guntur,01-08-2024,Survey,16,21,257
+Bhaskar M. D.,Guntur,01-08-2024,Documentation,18,23,281
+Giridhar Babu V,Krishna,01-08-2024,Field Visit,15,10,121
+Giridhar Babu V,Krishna,01-08-2024,Farmer Meeting,10,8,99
+Giridhar Babu V,Krishna,01-08-2024,Training Session,14,9,109
+Giridhar Babu V,Krishna,01-08-2024,Survey,15,11,137
+Giridhar Babu V,Krishna,01-08-2024,Documentation,17,15,185
+Besta Udaya Kumar,Prakasam,01-08-2024,Field Visit,17,19,230
+Besta Udaya Kumar,Prakasam,01-08-2024,Farmer Meeting,12,13,161
+Besta Udaya Kumar,Prakasam,01-08-2024,Training Session,18,23,278
+Besta Udaya Kumar,Prakasam,01-08-2024,Survey,16,20,243
+Besta Udaya Kumar,Prakasam,01-08-2024,Documentation,15,16,193
+Harinath Kumar K,Nellore,01-08-2024,Field Visit,18,17,204
+Harinath Kumar K,Nellore,01-08-2024,Farmer Meeting,10,7,85
+Harinath Kumar K,Nellore,01-08-2024,Training Session,12,12,148
+Harinath Kumar K,Nellore,01-08-2024,Survey,11,11,135
+Harinath Kumar K,Nellore,01-08-2024,Documentation,17,17,206
+Narender N,Kadapa,01-08-2024,Field Visit,18,16,197
+Narender N,Kadapa,01-08-2024,Farmer Meeting,11,13,158
+Narender N,Kadapa,01-08-2024,Training Session,15,13,158
+Narender N,Kadapa,01-08-2024,Survey,16,15,183
+Narender N,Kadapa,01-08-2024,Documentation,10,10,124
+Prashantika P,Guntur,01-08-2024,Field Visit,12,11,132
+Prashantika P,Guntur,01-08-2024,Farmer Meeting,14,12,148
+Prashantika P,Guntur,01-08-2024,Training Session,13,9,110
+Prashantika P,Guntur,01-08-2024,Survey,12,11,136
+Prashantika P,Guntur,01-08-2024,Documentation,10,9,110
+Mahesh S,Krishna,01-08-2024,Field Visit,17,20,240
+Mahesh S,Krishna,01-08-2024,Farmer Meeting,15,19,229
+Mahesh S,Krishna,01-08-2024,Training Session,10,12,148
+Mahesh S,Krishna,01-08-2024,Survey,11,12,149
+Mahesh S,Krishna,01-08-2024,Documentation,17,20,244
+Jayanna J,Guntur,01-09-2024,Field Visit,11,16,197
+Jayanna J,Guntur,01-09-2024,Farmer Meeting,16,27,325
+Jayanna J,Guntur,01-09-2024,Training Session,13,22,268
+Jayanna J,Guntur,01-09-2024,Survey,15,23,280
+Jayanna J,Guntur,01-09-2024,Documentation,12,19,231
+Venkatarao Pasala,Krishna,01-09-2024,Field Visit,14,7,88
+Venkatarao Pasala,Krishna,01-09-2024,Farmer Meeting,16,5,61
+Venkatarao Pasala,Krishna,01-09-2024,Training Session,12,3,38
+Venkatarao Pasala,Krishna,01-09-2024,Survey,9,6,76
+Venkatarao Pasala,Krishna,01-09-2024,Documentation,12,7,85
+Giridhar R,Prakasam,01-09-2024,Field Visit,9,8,101
+Giridhar R,Prakasam,01-09-2024,Farmer Meeting,9,9,108
+Giridhar R,Prakasam,01-09-2024,Training Session,9,10,120
+Giridhar R,Prakasam,01-09-2024,Survey,17,19,230
+Giridhar R,Prakasam,01-09-2024,Documentation,16,18,220
+P Sivanjuna Reddy,Nellore,01-09-2024,Field Visit,11,14,172
+P Sivanjuna Reddy,Nellore,01-09-2024,Farmer Meeting,16,16,195
+P Sivanjuna Reddy,Nellore,01-09-2024,Training Session,15,15,180
+P Sivanjuna Reddy,Nellore,01-09-2024,Survey,10,12,146
+P Sivanjuna Reddy,Nellore,01-09-2024,Documentation,15,17,207
+Anusha K,Kadapa,01-09-2024,Field Visit,9,2,24
+Anusha K,Kadapa,01-09-2024,Farmer Meeting,15,8,96
+Anusha K,Kadapa,01-09-2024,Training Session,12,5,61
+Anusha K,Kadapa,01-09-2024,Survey,17,10,121
+Anusha K,Kadapa,01-09-2024,Documentation,15,7,86
+Bhaskar M. D.,Guntur,01-09-2024,Field Visit,16,20,240
+Bhaskar M. D.,Guntur,01-09-2024,Farmer Meeting,16,23,276
+Bhaskar M. D.,Guntur,01-09-2024,Training Session,9,14,168
+Bhaskar M. D.,Guntur,01-09-2024,Survey,10,12,145
+Bhaskar M. D.,Guntur,01-09-2024,Documentation,15,21,255
+Giridhar Babu V,Krishna,01-09-2024,Field Visit,12,11,132
+Giridhar Babu V,Krishna,01-09-2024,Farmer Meeting,11,10,120
+Giridhar Babu V,Krishna,01-09-2024,Training Session,15,12,147
+Giridhar Babu V,Krishna,01-09-2024,Survey,13,12,149
+Giridhar Babu V,Krishna,01-09-2024,Documentation,17,15,181
+Besta Udaya Kumar,Prakasam,01-09-2024,Field Visit,12,14,169
+Besta Udaya Kumar,Prakasam,01-09-2024,Farmer Meeting,9,12,149
+Besta Udaya Kumar,Prakasam,01-09-2024,Training Session,17,18,221
+Besta Udaya Kumar,Prakasam,01-09-2024,Survey,14,14,168
+Besta Udaya Kumar,Prakasam,01-09-2024,Documentation,16,20,244
+Harinath Kumar K,Nellore,01-09-2024,Field Visit,11,8,100
+Harinath Kumar K,Nellore,01-09-2024,Farmer Meeting,10,8,96
+Harinath Kumar K,Nellore,01-09-2024,Training Session,10,8,99
+Harinath Kumar K,Nellore,01-09-2024,Survey,10,11,133
+Harinath Kumar K,Nellore,01-09-2024,Documentation,9,10,120
+Narender N,Kadapa,01-09-2024,Field Visit,15,17,208
+Narender N,Kadapa,01-09-2024,Farmer Meeting,17,17,206
+Narender N,Kadapa,01-09-2024,Training Session,12,12,145
+Narender N,Kadapa,01-09-2024,Survey,13,14,169
+Narender N,Kadapa,01-09-2024,Documentation,13,14,170
+Prashantika P,Guntur,01-09-2024,Field Visit,10,5,63
+Prashantika P,Guntur,01-09-2024,Farmer Meeting,10,5,64
+Prashantika P,Guntur,01-09-2024,Training Session,12,11,134
+Prashantika P,Guntur,01-09-2024,Survey,11,8,96
+Prashantika P,Guntur,01-09-2024,Documentation,12,9,110
+Mahesh S,Krishna,01-09-2024,Field Visit,11,15,184
+Mahesh S,Krishna,01-09-2024,Farmer Meeting,13,18,221
+Mahesh S,Krishna,01-09-2024,Training Session,17,20,245
+Mahesh S,Krishna,01-09-2024,Survey,17,22,269
+Mahesh S,Krishna,01-09-2024,Documentation,10,12,146
+Jayanna J,Guntur,01-10-2024,Field Visit,7,9,113
+Jayanna J,Guntur,01-10-2024,Farmer Meeting,12,18,218
+Jayanna J,Guntur,01-10-2024,Training Session,9,16,193
+Jayanna J,Guntur,01-10-2024,Survey,10,15,185
+Jayanna J,Guntur,01-10-2024,Documentation,9,16,195
+Venkatarao Pasala,Krishna,01-10-2024,Field Visit,9,2,24
+Venkatarao Pasala,Krishna,01-10-2024,Farmer Meeting,11,4,48
+Venkatarao Pasala,Krishna,01-10-2024,Training Session,7,3,37
+Venkatarao Pasala,Krishna,01-10-2024,Survey,9,3,41
+Venkatarao Pasala,Krishna,01-10-2024,Documentation,11,6,77
+Giridhar R,Prakasam,01-10-2024,Field Visit,11,15,180
+Giridhar R,Prakasam,01-10-2024,Farmer Meeting,7,6,77
+Giridhar R,Prakasam,01-10-2024,Training Session,8,11,132
+Giridhar R,Prakasam,01-10-2024,Survey,10,14,172
+Giridhar R,Prakasam,01-10-2024,Documentation,8,10,121
+P Sivanjuna Reddy,Nellore,01-10-2024,Field Visit,7,7,86
+P Sivanjuna Reddy,Nellore,01-10-2024,Farmer Meeting,7,7,85
+P Sivanjuna Reddy,Nellore,01-10-2024,Training Session,9,7,86
+P Sivanjuna Reddy,Nellore,01-10-2024,Survey,12,14,172
+P Sivanjuna Reddy,Nellore,01-10-2024,Documentation,8,7,85
+Anusha K,Kadapa,01-10-2024,Field Visit,8,5,60
+Anusha K,Kadapa,01-10-2024,Farmer Meeting,8,4,51
+Anusha K,Kadapa,01-10-2024,Training Session,9,4,49
+Anusha K,Kadapa,01-10-2024,Survey,7,4,48
+Anusha K,Kadapa,01-10-2024,Documentation,11,5,61
+Bhaskar M. D.,Guntur,01-10-2024,Field Visit,11,14,170
+Bhaskar M. D.,Guntur,01-10-2024,Farmer Meeting,9,11,132
+Bhaskar M. D.,Guntur,01-10-2024,Training Session,9,13,158
+Bhaskar M. D.,Guntur,01-10-2024,Survey,9,10,122
+Bhaskar M. D.,Guntur,01-10-2024,Documentation,10,15,183
+Giridhar Babu V,Krishna,01-10-2024,Field Visit,12,10,120
+Giridhar Babu V,Krishna,01-10-2024,Farmer Meeting,7,5,61
+Giridhar Babu V,Krishna,01-10-2024,Training Session,9,5,60
+Giridhar Babu V,Krishna,01-10-2024,Survey,11,9,113
+Giridhar Babu V,Krishna,01-10-2024,Documentation,10,9,112
+Besta Udaya Kumar,Prakasam,01-10-2024,Field Visit,12,12,147
+Besta Udaya Kumar,Prakasam,01-10-2024,Farmer Meeting,9,10,120
+Besta Udaya Kumar,Prakasam,01-10-2024,Training Session,11,10,124
+Besta Udaya Kumar,Prakasam,01-10-2024,Survey,12,13,158
+Besta Udaya Kumar,Prakasam,01-10-2024,Documentation,11,10,125
+Harinath Kumar K,Nellore,01-10-2024,Field Visit,10,11,134
+Harinath Kumar K,Nellore,01-10-2024,Farmer Meeting,7,6,76
+Harinath Kumar K,Nellore,01-10-2024,Training Session,9,9,110
+Harinath Kumar K,Nellore,01-10-2024,Survey,11,10,124
+Harinath Kumar K,Nellore,01-10-2024,Documentation,8,6,75
+Narender N,Kadapa,01-10-2024,Field Visit,11,10,124
+Narender N,Kadapa,01-10-2024,Farmer Meeting,9,10,124
+Narender N,Kadapa,01-10-2024,Training Session,7,7,86
+Narender N,Kadapa,01-10-2024,Survey,9,10,124
+Narender N,Kadapa,01-10-2024,Documentation,10,11,135
+Prashantika P,Guntur,01-10-2024,Field Visit,11,7,88
+Prashantika P,Guntur,01-10-2024,Farmer Meeting,11,7,89
+Prashantika P,Guntur,01-10-2024,Training Session,7,5,64
+Prashantika P,Guntur,01-10-2024,Survey,10,5,61
+Prashantika P,Guntur,01-10-2024,Documentation,9,6,73
+Mahesh S,Krishna,01-10-2024,Field Visit,8,8,96
+Mahesh S,Krishna,01-10-2024,Farmer Meeting,9,12,148
+Mahesh S,Krishna,01-10-2024,Training Session,7,10,123
+Mahesh S,Krishna,01-10-2024,Survey,9,12,147
+Mahesh S,Krishna,01-10-2024,Documentation,11,13,157
+Jayanna J,Guntur,01-11-2024,Field Visit,3,2,27
+Jayanna J,Guntur,01-11-2024,Farmer Meeting,4,5,65
+Jayanna J,Guntur,01-11-2024,Training Session,5,9,108
+Jayanna J,Guntur,01-11-2024,Survey,5,7,84
+Jayanna J,Guntur,01-11-2024,Documentation,5,7,87
+Venkatarao Pasala,Krishna,01-11-2024,Field Visit,5,4,52
+Venkatarao Pasala,Krishna,01-11-2024,Farmer Meeting,4,2,28
+Venkatarao Pasala,Krishna,01-11-2024,Training Session,5,3,40
+Venkatarao Pasala,Krishna,01-11-2024,Survey,5,1,17
+Venkatarao Pasala,Krishna,01-11-2024,Documentation,5,3,38
+Giridhar R,Prakasam,01-11-2024,Field Visit,4,4,52
+Giridhar R,Prakasam,01-11-2024,Farmer Meeting,5,5,62
+Giridhar R,Prakasam,01-11-2024,Training Session,5,4,53
+Giridhar R,Prakasam,01-11-2024,Survey,4,3,38
+Giridhar R,Prakasam,01-11-2024,Documentation,4,4,52
+P Sivanjuna Reddy,Nellore,01-11-2024,Field Visit,3,2,25
+P Sivanjuna Reddy,Nellore,01-11-2024,Farmer Meeting,4,5,65
+P Sivanjuna Reddy,Nellore,01-11-2024,Training Session,3,2,24
+P Sivanjuna Reddy,Nellore,01-11-2024,Survey,5,6,74
+P Sivanjuna Reddy,Nellore,01-11-2024,Documentation,5,6,75
+Anusha K,Kadapa,01-11-2024,Field Visit,3,0,3
+Anusha K,Kadapa,01-11-2024,Farmer Meeting,5,4,53
+Anusha K,Kadapa,01-11-2024,Training Session,3,3,39
+Anusha K,Kadapa,01-11-2024,Survey,5,0,2
+Anusha K,Kadapa,01-11-2024,Documentation,4,3,39
+Bhaskar M. D.,Guntur,01-11-2024,Field Visit,5,8,100
+Bhaskar M. D.,Guntur,01-11-2024,Farmer Meeting,4,6,73
+Bhaskar M. D.,Guntur,01-11-2024,Training Session,4,6,75
+Bhaskar M. D.,Guntur,01-11-2024,Survey,3,5,62
+Bhaskar M. D.,Guntur,01-11-2024,Documentation,5,5,63
+Giridhar Babu V,Krishna,01-11-2024,Field Visit,3,4,52
+Giridhar Babu V,Krishna,01-11-2024,Farmer Meeting,3,3,40
+Giridhar Babu V,Krishna,01-11-2024,Training Session,3,0,5
+Giridhar Babu V,Krishna,01-11-2024,Survey,5,3,39
+Giridhar Babu V,Krishna,01-11-2024,Documentation,3,0,2
+Besta Udaya Kumar,Prakasam,01-11-2024,Field Visit,5,5,61
+Besta Udaya Kumar,Prakasam,01-11-2024,Farmer Meeting,5,5,62
+Besta Udaya Kumar,Prakasam,01-11-2024,Training Session,5,5,63
+Besta Udaya Kumar,Prakasam,01-11-2024,Survey,4,2,27
+Besta Udaya Kumar,Prakasam,01-11-2024,Documentation,3,5,60
+Harinath Kumar K,Nellore,01-11-2024,Field Visit,4,2,29
+Harinath Kumar K,Nellore,01-11-2024,Farmer Meeting,3,0,0
+Harinath Kumar K,Nellore,01-11-2024,Training Session,4,2,24
+Harinath Kumar K,Nellore,01-11-2024,Survey,3,1,13
+Harinath Kumar K,Nellore,01-11-2024,Documentation,5,2,28
+Narender N,Kadapa,01-11-2024,Field Visit,4,5,65
+Narender N,Kadapa,01-11-2024,Farmer Meeting,4,4,49
+Narender N,Kadapa,01-11-2024,Training Session,3,2,26
+Narender N,Kadapa,01-11-2024,Survey,3,5,60
+Narender N,Kadapa,01-11-2024,Documentation,4,6,77
+Prashantika P,Guntur,01-11-2024,Field Visit,5,4,53
+Prashantika P,Guntur,01-11-2024,Farmer Meeting,4,1,16
+Prashantika P,Guntur,01-11-2024,Training Session,4,1,17
+Prashantika P,Guntur,01-11-2024,Survey,4,5,60
+Prashantika P,Guntur,01-11-2024,Documentation,3,2,28
+Mahesh S,Krishna,01-11-2024,Field Visit,5,6,72
+Mahesh S,Krishna,01-11-2024,Farmer Meeting,5,6,72
+Mahesh S,Krishna,01-11-2024,Training Session,5,7,84
+Mahesh S,Krishna,01-11-2024,Survey,5,6,77
+Mahesh S,Krishna,01-11-2024,Documentation,5,5,63
+Jayanna J,Guntur,01-12-2024,Field Visit,2,5,65
+Jayanna J,Guntur,01-12-2024,Farmer Meeting,2,5,64
+Jayanna J,Guntur,01-12-2024,Training Session,3,5,63
+Jayanna J,Guntur,01-12-2024,Survey,2,3,37
+Jayanna J,Guntur,01-12-2024,Documentation,1,1,15
+Venkatarao Pasala,Krishna,01-12-2024,Field Visit,2,1,16
+Venkatarao Pasala,Krishna,01-12-2024,Farmer Meeting,2,0,0
+Venkatarao Pasala,Krishna,01-12-2024,Training Session,3,1,13
+Venkatarao Pasala,Krishna,01-12-2024,Survey,3,0,2
+Venkatarao Pasala,Krishna,01-12-2024,Documentation,2,0,2
+Giridhar R,Prakasam,01-12-2024,Field Visit,2,4,48
+Giridhar R,Prakasam,01-12-2024,Farmer Meeting,3,2,24
+Giridhar R,Prakasam,01-12-2024,Training Session,2,3,39
+Giridhar R,Prakasam,01-12-2024,Survey,3,2,29
+Giridhar R,Prakasam,01-12-2024,Documentation,3,4,51
+P Sivanjuna Reddy,Nellore,01-12-2024,Field Visit,1,0,2
+P Sivanjuna Reddy,Nellore,01-12-2024,Farmer Meeting,2,3,41
+P Sivanjuna Reddy,Nellore,01-12-2024,Training Session,2,2,29
+P Sivanjuna Reddy,Nellore,01-12-2024,Survey,2,3,40
+P Sivanjuna Reddy,Nellore,01-12-2024,Documentation,3,3,39
+Anusha K,Kadapa,01-12-2024,Field Visit,3,1,14
+Anusha K,Kadapa,01-12-2024,Farmer Meeting,3,1,14
+Anusha K,Kadapa,01-12-2024,Training Session,2,0,0
+Anusha K,Kadapa,01-12-2024,Survey,2,1,12
+Anusha K,Kadapa,01-12-2024,Documentation,3,0,1
+Bhaskar M. D.,Guntur,01-12-2024,Field Visit,2,3,38
+Bhaskar M. D.,Guntur,01-12-2024,Farmer Meeting,3,6,74
+Bhaskar M. D.,Guntur,01-12-2024,Training Session,1,0,2
+Bhaskar M. D.,Guntur,01-12-2024,Survey,2,2,25
+Bhaskar M. D.,Guntur,01-12-2024,Documentation,2,0,5
+Giridhar Babu V,Krishna,01-12-2024,Field Visit,3,1,14
+Giridhar Babu V,Krishna,01-12-2024,Farmer Meeting,1,0,4
+Giridhar Babu V,Krishna,01-12-2024,Training Session,2,0,5
+Giridhar Babu V,Krishna,01-12-2024,Survey,3,0,0
+Giridhar Babu V,Krishna,01-12-2024,Documentation,2,2,27
+Besta Udaya Kumar,Prakasam,01-12-2024,Field Visit,3,3,37
+Besta Udaya Kumar,Prakasam,01-12-2024,Farmer Meeting,1,1,15
+Besta Udaya Kumar,Prakasam,01-12-2024,Training Session,1,0,3
+Besta Udaya Kumar,Prakasam,01-12-2024,Survey,3,1,16
+Besta Udaya Kumar,Prakasam,01-12-2024,Documentation,1,0,1
+Harinath Kumar K,Nellore,01-12-2024,Field Visit,2,0,1
+Harinath Kumar K,Nellore,01-12-2024,Farmer Meeting,1,2,27
+Harinath Kumar K,Nellore,01-12-2024,Training Session,2,3,39
+Harinath Kumar K,Nellore,01-12-2024,Survey,3,3,38
+Harinath Kumar K,Nellore,01-12-2024,Documentation,2,1,16
+Narender N,Kadapa,01-12-2024,Field Visit,1,3,41
+Narender N,Kadapa,01-12-2024,Farmer Meeting,1,0,5
+Narender N,Kadapa,01-12-2024,Training Session,2,2,29
+Narender N,Kadapa,01-12-2024,Survey,1,0,1
+Narender N,Kadapa,01-12-2024,Documentation,2,4,48
+Prashantika P,Guntur,01-12-2024,Field Visit,2,0,3
+Prashantika P,Guntur,01-12-2024,Farmer Meeting,3,4,51
+Prashantika P,Guntur,01-12-2024,Training Session,2,0,1
+Prashantika P,Guntur,01-12-2024,Survey,2,1,17
+Prashantika P,Guntur,01-12-2024,Documentation,3,0,5
+Mahesh S,Krishna,01-12-2024,Field Visit,2,2,29
+Mahesh S,Krishna,01-12-2024,Farmer Meeting,2,3,36
+Mahesh S,Krishna,01-12-2024,Training Session,3,2,29
+Mahesh S,Krishna,01-12-2024,Survey,2,2,25
+Mahesh S,Krishna,01-12-2024,Documentation,1,0,1
+Jayanna J,Guntur,01-01-2025,Field Visit,1,3,41
+Jayanna J,Guntur,01-01-2025,Farmer Meeting,1,2,24
+Jayanna J,Guntur,01-01-2025,Training Session,1,1,17
+Jayanna J,Guntur,01-01-2025,Survey,1,1,16
+Jayanna J,Guntur,01-01-2025,Documentation,1,2,27
+Venkatarao Pasala,Krishna,01-01-2025,Field Visit,1,2,24
+Venkatarao Pasala,Krishna,01-01-2025,Farmer Meeting,1,0,4
+Venkatarao Pasala,Krishna,01-01-2025,Training Session,1,0,0
+Venkatarao Pasala,Krishna,01-01-2025,Survey,1,2,28
+Venkatarao Pasala,Krishna,01-01-2025,Documentation,1,0,4
+Giridhar R,Prakasam,01-01-2025,Field Visit,1,0,3
+Giridhar R,Prakasam,01-01-2025,Farmer Meeting,1,2,26
+Giridhar R,Prakasam,01-01-2025,Training Session,1,3,39
+Giridhar R,Prakasam,01-01-2025,Survey,1,0,3
+Giridhar R,Prakasam,01-01-2025,Documentation,1,2,26
+P Sivanjuna Reddy,Nellore,01-01-2025,Field Visit,1,0,1
+P Sivanjuna Reddy,Nellore,01-01-2025,Farmer Meeting,1,2,29
+P Sivanjuna Reddy,Nellore,01-01-2025,Training Session,1,1,17
+P Sivanjuna Reddy,Nellore,01-01-2025,Survey,1,3,36
+P Sivanjuna Reddy,Nellore,01-01-2025,Documentation,1,0,2
+Anusha K,Kadapa,01-01-2025,Field Visit,1,0,0
+Anusha K,Kadapa,01-01-2025,Farmer Meeting,1,2,24
+Anusha K,Kadapa,01-01-2025,Training Session,1,1,15
+Anusha K,Kadapa,01-01-2025,Survey,1,0,4
+Anusha K,Kadapa,01-01-2025,Documentation,1,2,27
+Bhaskar M. D.,Guntur,01-01-2025,Field Visit,1,0,1
+Bhaskar M. D.,Guntur,01-01-2025,Farmer Meeting,1,3,37
+Bhaskar M. D.,Guntur,01-01-2025,Training Session,1,2,29
+Bhaskar M. D.,Guntur,01-01-2025,Survey,1,0,0
+Bhaskar M. D.,Guntur,01-01-2025,Documentation,1,0,2
+Giridhar Babu V,Krishna,01-01-2025,Field Visit,1,0,4
+Giridhar Babu V,Krishna,01-01-2025,Farmer Meeting,1,0,1
+Giridhar Babu V,Krishna,01-01-2025,Training Session,1,1,12
+Giridhar Babu V,Krishna,01-01-2025,Survey,1,1,17
+Giridhar Babu V,Krishna,01-01-2025,Documentation,1,2,29
+Besta Udaya Kumar,Prakasam,01-01-2025,Field Visit,1,2,27
+Besta Udaya Kumar,Prakasam,01-01-2025,Farmer Meeting,1,0,3
+Besta Udaya Kumar,Prakasam,01-01-2025,Training Session,1,0,3
+Besta Udaya Kumar,Prakasam,01-01-2025,Survey,1,3,40
+Besta Udaya Kumar,Prakasam,01-01-2025,Documentation,1,0,2
+Harinath Kumar K,Nellore,01-01-2025,Field Visit,1,0,4
+Harinath Kumar K,Nellore,01-01-2025,Farmer Meeting,1,0,2
+Harinath Kumar K,Nellore,01-01-2025,Training Session,1,2,28
+Harinath Kumar K,Nellore,01-01-2025,Survey,1,0,3
+Harinath Kumar K,Nellore,01-01-2025,Documentation,1,1,14
+Narender N,Kadapa,01-01-2025,Field Visit,1,3,40
+Narender N,Kadapa,01-01-2025,Farmer Meeting,1,2,26
+Narender N,Kadapa,01-01-2025,Training Session,1,0,4
+Narender N,Kadapa,01-01-2025,Survey,1,0,3
+Narender N,Kadapa,01-01-2025,Documentation,1,1,17
+Prashantika P,Guntur,01-01-2025,Field Visit,1,1,15
+Prashantika P,Guntur,01-01-2025,Farmer Meeting,1,1,12
+Prashantika P,Guntur,01-01-2025,Training Session,1,2,28
+Prashantika P,Guntur,01-01-2025,Survey,1,0,3
+Prashantika P,Guntur,01-01-2025,Documentation,1,2,27
+Mahesh S,Krishna,01-01-2025,Field Visit,1,0,3
+Mahesh S,Krishna,01-01-2025,Farmer Meeting,1,0,3
+Mahesh S,Krishna,01-01-2025,Training Session,1,1,16
+Mahesh S,Krishna,01-01-2025,Survey,1,0,2
+Mahesh S,Krishna,01-01-2025,Documentation,1,2,26
+Jayanna J,Guntur,01-02-2025,Field Visit,1,3,36
+Jayanna J,Guntur,01-02-2025,Farmer Meeting,1,0,5
+Jayanna J,Guntur,01-02-2025,Training Session,1,0,5
+Jayanna J,Guntur,01-02-2025,Survey,1,2,24
+Jayanna J,Guntur,01-02-2025,Documentation,1,2,25
+Venkatarao Pasala,Krishna,01-02-2025,Field Visit,1,0,0
+Venkatarao Pasala,Krishna,01-02-2025,Farmer Meeting,1,0,2
+Venkatarao Pasala,Krishna,01-02-2025,Training Session,1,0,3
+Venkatarao Pasala,Krishna,01-02-2025,Survey,1,0,4
+Venkatarao Pasala,Krishna,01-02-2025,Documentation,1,2,29
+Giridhar R,Prakasam,01-02-2025,Field Visit,1,0,1
+Giridhar R,Prakasam,01-02-2025,Farmer Meeting,1,3,39
+Giridhar R,Prakasam,01-02-2025,Training Session,1,2,28
+Giridhar R,Prakasam,01-02-2025,Survey,1,0,3
+Giridhar R,Prakasam,01-02-2025,Documentation,1,2,26
+P Sivanjuna Reddy,Nellore,01-02-2025,Field Visit,1,2,26
+P Sivanjuna Reddy,Nellore,01-02-2025,Farmer Meeting,1,0,0
+P Sivanjuna Reddy,Nellore,01-02-2025,Training Session,1,1,16
+P Sivanjuna Reddy,Nellore,01-02-2025,Survey,1,2,29
+P Sivanjuna Reddy,Nellore,01-02-2025,Documentation,1,2,26
+Anusha K,Kadapa,01-02-2025,Field Visit,1,1,15
+Anusha K,Kadapa,01-02-2025,Farmer Meeting,1,0,3
+Anusha K,Kadapa,01-02-2025,Training Session,1,2,26
+Anusha K,Kadapa,01-02-2025,Survey,1,0,5
+Anusha K,Kadapa,01-02-2025,Documentation,1,0,0
+Bhaskar M. D.,Guntur,01-02-2025,Field Visit,1,3,41
+Bhaskar M. D.,Guntur,01-02-2025,Farmer Meeting,1,1,13
+Bhaskar M. D.,Guntur,01-02-2025,Training Session,1,0,5
+Bhaskar M. D.,Guntur,01-02-2025,Survey,1,3,38
+Bhaskar M. D.,Guntur,01-02-2025,Documentation,1,0,5
+Giridhar Babu V,Krishna,01-02-2025,Field Visit,1,0,3
+Giridhar Babu V,Krishna,01-02-2025,Farmer Meeting,1,2,26
+Giridhar Babu V,Krishna,01-02-2025,Training Session,1,0,2
+Giridhar Babu V,Krishna,01-02-2025,Survey,1,1,13
+Giridhar Babu V,Krishna,01-02-2025,Documentation,1,0,4
+Besta Udaya Kumar,Prakasam,01-02-2025,Field Visit,1,3,40
+Besta Udaya Kumar,Prakasam,01-02-2025,Farmer Meeting,1,0,2
+Besta Udaya Kumar,Prakasam,01-02-2025,Training Session,1,1,17
+Besta Udaya Kumar,Prakasam,01-02-2025,Survey,1,0,3
+Besta Udaya Kumar,Prakasam,01-02-2025,Documentation,1,0,1
+Harinath Kumar K,Nellore,01-02-2025,Field Visit,1,2,26
+Harinath Kumar K,Nellore,01-02-2025,Farmer Meeting,1,1,12
+Harinath Kumar K,Nellore,01-02-2025,Training Session,1,2,24
+Harinath Kumar K,Nellore,01-02-2025,Survey,1,0,5
+Harinath Kumar K,Nellore,01-02-2025,Documentation,1,2,27
+Narender N,Kadapa,01-02-2025,Field Visit,1,0,5
+Narender N,Kadapa,01-02-2025,Farmer Meeting,1,2,24
+Narender N,Kadapa,01-02-2025,Training Session,1,1,16
+Narender N,Kadapa,01-02-2025,Survey,1,0,5
+Narender N,Kadapa,01-02-2025,Documentation,1,1,17
+Prashantika P,Guntur,01-02-2025,Field Visit,1,0,1
+Prashantika P,Guntur,01-02-2025,Farmer Meeting,1,0,2
+Prashantika P,Guntur,01-02-2025,Training Session,1,0,0
+Prashantika P,Guntur,01-02-2025,Survey,1,2,25
+Prashantika P,Guntur,01-02-2025,Documentation,1,1,14
+Mahesh S,Krishna,01-02-2025,Field Visit,1,2,28
+Mahesh S,Krishna,01-02-2025,Farmer Meeting,1,2,29
+Mahesh S,Krishna,01-02-2025,Training Session,1,2,28
+Mahesh S,Krishna,01-02-2025,Survey,1,1,12
+Mahesh S,Krishna,01-02-2025,Documentation,1,0,3
+Jayanna J,Guntur,01-03-2025,Field Visit,1,0,2
+Jayanna J,Guntur,01-03-2025,Farmer Meeting,1,1,16
+Jayanna J,Guntur,01-03-2025,Training Session,1,0,3
+Jayanna J,Guntur,01-03-2025,Survey,1,0,0
+Jayanna J,Guntur,01-03-2025,Documentation,1,0,5
+Venkatarao Pasala,Krishna,01-03-2025,Field Visit,1,2,24
+Venkatarao Pasala,Krishna,01-03-2025,Farmer Meeting,1,0,1
+Venkatarao Pasala,Krishna,01-03-2025,Training Session,1,2,25
+Venkatarao Pasala,Krishna,01-03-2025,Survey,1,2,25
+Venkatarao Pasala,Krishna,01-03-2025,Documentation,1,0,2
+Giridhar R,Prakasam,01-03-2025,Field Visit,1,3,36
+Giridhar R,Prakasam,01-03-2025,Farmer Meeting,1,0,1
+Giridhar R,Prakasam,01-03-2025,Training Session,1,1,13
+Giridhar R,Prakasam,01-03-2025,Survey,1,0,1
+Giridhar R,Prakasam,01-03-2025,Documentation,1,1,13
+P Sivanjuna Reddy,Nellore,01-03-2025,Field Visit,1,0,1
+P Sivanjuna Reddy,Nellore,01-03-2025,Farmer Meeting,1,0,1
+P Sivanjuna Reddy,Nellore,01-03-2025,Training Session,1,3,36
+P Sivanjuna Reddy,Nellore,01-03-2025,Survey,1,2,27
+P Sivanjuna Reddy,Nellore,01-03-2025,Documentation,1,3,40
+Anusha K,Kadapa,01-03-2025,Field Visit,1,1,16
+Anusha K,Kadapa,01-03-2025,Farmer Meeting,1,2,24
+Anusha K,Kadapa,01-03-2025,Training Session,1,0,3
+Anusha K,Kadapa,01-03-2025,Survey,1,0,3
+Anusha K,Kadapa,01-03-2025,Documentation,1,1,17
+Bhaskar M. D.,Guntur,01-03-2025,Field Visit,1,2,29
+Bhaskar M. D.,Guntur,01-03-2025,Farmer Meeting,1,0,0
+Bhaskar M. D.,Guntur,01-03-2025,Training Session,1,3,37
+Bhaskar M. D.,Guntur,01-03-2025,Survey,1,0,2
+Bhaskar M. D.,Guntur,01-03-2025,Documentation,1,1,15
+Giridhar Babu V,Krishna,01-03-2025,Field Visit,1,0,3
+Giridhar Babu V,Krishna,01-03-2025,Farmer Meeting,1,2,27
+Giridhar Babu V,Krishna,01-03-2025,Training Session,1,0,5
+Giridhar Babu V,Krishna,01-03-2025,Survey,1,0,3
+Giridhar Babu V,Krishna,01-03-2025,Documentation,1,0,3
+Besta Udaya Kumar,Prakasam,01-03-2025,Field Visit,1,2,27
+Besta Udaya Kumar,Prakasam,01-03-2025,Farmer Meeting,1,0,2
+Besta Udaya Kumar,Prakasam,01-03-2025,Training Session,1,1,17
+Besta Udaya Kumar,Prakasam,01-03-2025,Survey,1,1,13
+Besta Udaya Kumar,Prakasam,01-03-2025,Documentation,1,0,0
+Harinath Kumar K,Nellore,01-03-2025,Field Visit,1,0,3
+Harinath Kumar K,Nellore,01-03-2025,Farmer Meeting,1,0,1
+Harinath Kumar K,Nellore,01-03-2025,Training Session,1,0,4
+Harinath Kumar K,Nellore,01-03-2025,Survey,1,2,26
+Harinath Kumar K,Nellore,01-03-2025,Documentation,1,1,14
+Narender N,Kadapa,01-03-2025,Field Visit,1,0,2
+Narender N,Kadapa,01-03-2025,Farmer Meeting,1,1,12
+Narender N,Kadapa,01-03-2025,Training Session,1,0,1
+Narender N,Kadapa,01-03-2025,Survey,1,0,0
+Narender N,Kadapa,01-03-2025,Documentation,1,3,38
+Prashantika P,Guntur,01-03-2025,Field Visit,1,0,4
+Prashantika P,Guntur,01-03-2025,Farmer Meeting,1,1,16
+Prashantika P,Guntur,01-03-2025,Training Session,1,0,4
+Prashantika P,Guntur,01-03-2025,Survey,1,0,1
+Prashantika P,Guntur,01-03-2025,Documentation,1,0,2
+Mahesh S,Krishna,01-03-2025,Field Visit,1,0,1
+Mahesh S,Krishna,01-03-2025,Farmer Meeting,1,3,41
+Mahesh S,Krishna,01-03-2025,Training Session,1,0,1
+Mahesh S,Krishna,01-03-2025,Survey,1,0,5
+Mahesh S,Krishna,01-03-2025,Documentation,1,0,3
+Jayanna J,Guntur,01-04-2025,Field Visit,1,2,26
+Jayanna J,Guntur,01-04-2025,Farmer Meeting,1,1,14
+Jayanna J,Guntur,01-04-2025,Training Session,1,3,40
+Jayanna J,Guntur,01-04-2025,Survey,1,0,1
+Jayanna J,Guntur,01-04-2025,Documentation,1,3,36
+Venkatarao Pasala,Krishna,01-04-2025,Field Visit,1,0,3
+Venkatarao Pasala,Krishna,01-04-2025,Farmer Meeting,1,1,16
+Venkatarao Pasala,Krishna,01-04-2025,Training Session,1,1,14
+Venkatarao Pasala,Krishna,01-04-2025,Survey,1,2,24
+Venkatarao Pasala,Krishna,01-04-2025,Documentation,1,1,12
+Giridhar R,Prakasam,01-04-2025,Field Visit,1,3,39
+Giridhar R,Prakasam,01-04-2025,Farmer Meeting,1,1,12
+Giridhar R,Prakasam,01-04-2025,Training Session,1,2,28
+Giridhar R,Prakasam,01-04-2025,Survey,1,0,1
+Giridhar R,Prakasam,01-04-2025,Documentation,1,0,1
+P Sivanjuna Reddy,Nellore,01-04-2025,Field Visit,1,1,14
+P Sivanjuna Reddy,Nellore,01-04-2025,Farmer Meeting,1,0,3
+P Sivanjuna Reddy,Nellore,01-04-2025,Training Session,1,0,1
+P Sivanjuna Reddy,Nellore,01-04-2025,Survey,1,3,41
+P Sivanjuna Reddy,Nellore,01-04-2025,Documentation,1,3,40
+Anusha K,Kadapa,01-04-2025,Field Visit,1,0,3
+Anusha K,Kadapa,01-04-2025,Farmer Meeting,1,1,12
+Anusha K,Kadapa,01-04-2025,Training Session,1,0,2
+Anusha K,Kadapa,01-04-2025,Survey,1,2,27
+Anusha K,Kadapa,01-04-2025,Documentation,1,0,0
+Bhaskar M. D.,Guntur,01-04-2025,Field Visit,1,0,2
+Bhaskar M. D.,Guntur,01-04-2025,Farmer Meeting,1,3,39
+Bhaskar M. D.,Guntur,01-04-2025,Training Session,1,0,3
+Bhaskar M. D.,Guntur,01-04-2025,Survey,1,0,3
+Bhaskar M. D.,Guntur,01-04-2025,Documentation,1,3,36
+Giridhar Babu V,Krishna,01-04-2025,Field Visit,1,0,5
+Giridhar Babu V,Krishna,01-04-2025,Farmer Meeting,1,0,2
+Giridhar Babu V,Krishna,01-04-2025,Training Session,1,0,4
+Giridhar Babu V,Krishna,01-04-2025,Survey,1,2,28
+Giridhar Babu V,Krishna,01-04-2025,Documentation,1,0,2
+Besta Udaya Kumar,Prakasam,01-04-2025,Field Visit,1,0,0
+Besta Udaya Kumar,Prakasam,01-04-2025,Farmer Meeting,1,1,13
+Besta Udaya Kumar,Prakasam,01-04-2025,Training Session,1,3,37
+Besta Udaya Kumar,Prakasam,01-04-2025,Survey,1,0,5
+Besta Udaya Kumar,Prakasam,01-04-2025,Documentation,1,2,28
+Harinath Kumar K,Nellore,01-04-2025,Field Visit,1,2,29
+Harinath Kumar K,Nellore,01-04-2025,Farmer Meeting,1,0,1
+Harinath Kumar K,Nellore,01-04-2025,Training Session,1,0,3
+Harinath Kumar K,Nellore,01-04-2025,Survey,1,0,2
+Harinath Kumar K,Nellore,01-04-2025,Documentation,1,0,4
+Narender N,Kadapa,01-04-2025,Field Visit,1,1,15
+Narender N,Kadapa,01-04-2025,Farmer Meeting,1,0,0
+Narender N,Kadapa,01-04-2025,Training Session,1,1,12
+Narender N,Kadapa,01-04-2025,Survey,1,3,40
+Narender N,Kadapa,01-04-2025,Documentation,1,2,27
+Prashantika P,Guntur,01-04-2025,Field Visit,1,0,3
+Prashantika P,Guntur,01-04-2025,Farmer Meeting,1,0,4
+Prashantika P,Guntur,01-04-2025,Training Session,1,2,25
+Prashantika P,Guntur,01-04-2025,Survey,1,1,12
+Prashantika P,Guntur,01-04-2025,Documentation,1,0,4
+Mahesh S,Krishna,01-04-2025,Field Visit,1,0,1
+Mahesh S,Krishna,01-04-2025,Farmer Meeting,1,2,28
+Mahesh S,Krishna,01-04-2025,Training Session,1,3,37
+Mahesh S,Krishna,01-04-2025,Survey,1,1,14
+Mahesh S,Krishna,01-04-2025,Documentation,1,2,26
