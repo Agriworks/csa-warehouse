@@ -28,7 +28,12 @@
         5432,
         27017,
         9000,
-        9001
+        9001,
+        8501,
+        8502,
+        8503,
+        8504,
+        8505
     ],
     // Configure tool-specific properties.
     "customizations": {
