@@ -4,7 +4,13 @@ Script to initialize default roles and endpoint access controls.
 Run this script to set up the initial roles and permissions in the database.
 """
 
+import sys
+import os
 from datetime import datetime
+
+# Add the parent directory of backend/app to the path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from app.schemas.models import Role
 from app.db.crud import (
     ensure_default_role_and_get_id,
@@ -12,10 +18,6 @@ from app.db.crud import (
     create_role,
     initialize_default_endpoint_access,
 )
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 def create_default_roles():
