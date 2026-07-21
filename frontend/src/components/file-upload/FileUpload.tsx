@@ -164,42 +164,25 @@ export const FileUploader = forwardRef<
         formData.append("metadata", JSON.stringify({}));
 
         try {
-          // Add timestamp to filename to prevent duplicates
-          const timestamp = new Date().getTime();
-          const fileExt = file.name.split(".").pop() || "";
-          const fileNameWithoutExt = file.name.slice(0, -(fileExt.length + 1));
-          const uniqueFileName = `${fileNameWithoutExt}_${timestamp}.${fileExt}`;
-
-          // Get presigned URL using SDK
-          const response = await getPresignedUrl({
-            query: {
-              filename: uniqueFileName,
-            },
+          // Direct upload to FastAPI backend to bypass browser CORS / PNA restrictions
+          const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+          const uploadResponse = await fetch(`${backendUrl}/upload`, {
+            method: "POST",
+            body: formData,
             headers: {
               Authorization: `Bearer ${session?.user?.apiToken}`,
-              "Content-Type": "application/json",
-            },
-          });
-          const presignedUrlResponse = response.data as PresignedUrlResponse;
-          console.log("Presigned URL response:", presignedUrlResponse);
-          const upload_url = presignedUrlResponse?.upload_url;
-          const object_name = presignedUrlResponse?.object_name;
-          if (!upload_url) {
-            throw new Error("Failed to get presigned URL");
-          }
-
-          // Now upload the file using the presigned URL
-          const uploadResponse = await fetch(upload_url, {
-            method: "PUT",
-            body: file,
-            headers: {
-              "Content-Type": file.type,
             },
           });
           if (!uploadResponse.ok) {
-            throw new Error("Upload failed");
+            const errorText = await uploadResponse.text();
+            throw new Error(`Upload failed: ${errorText || uploadResponse.statusText}`);
           }
-          console.log("Upload response:", uploadResponse);
+          const uploadResponseData = await uploadResponse.json() as PresignedUrlResponse;
+          console.log("Direct upload response:", uploadResponseData);
+          const object_name = uploadResponseData?.object_name;
+          if (!object_name) {
+            throw new Error("Failed to get object name from upload response");
+          }
 
           // Extract dataset after successful upload
           const extractCsvDataRequest: ExtractCsvDataRequest = {
@@ -233,6 +216,9 @@ export const FileUploader = forwardRef<
           };
         } catch (error) {
           console.error("Upload error:", error);
+          if (error instanceof Error && error.message === "Failed to fetch") {
+            toast.error("Upload connection failed. If you are using Brave, please try disabling Brave Shields (click the orange lion icon in the URL bar and toggle it off).");
+          }
           throw error;
         }
       },

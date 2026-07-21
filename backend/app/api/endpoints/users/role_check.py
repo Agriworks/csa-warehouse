@@ -95,13 +95,27 @@ def check_user_role_access(request: RoleCheckRequest, fastapi_request: Request, 
             raise HTTPException(status_code=404, detail="User not found")
 
         # Get user's role
-        role_id = user.get("role_id")
+        role_ids = user.get("role_id")
         role_name = "user"
-        if role_id:
-            role = get_role_by_id(role_id)
-            if role and role.get("role_name"):
-                role_name = role["role_name"]
-        logger.debug("User role resolved: role_id=%s role_name=%s", role_id, role_name)
+        if role_ids:
+            # Handle both list of IDs and single ID cases
+            if not isinstance(role_ids, list):
+                role_ids = [role_ids]
+            
+            roles_found = []
+            for r_id in role_ids:
+                role = get_role_by_id(r_id)
+                if role and role.get("role_name"):
+                    roles_found.append(role["role_name"])
+            
+            # Select the most privileged role if multiple exist
+            if "superadmin" in roles_found:
+                role_name = "superadmin"
+            elif "admin" in roles_found:
+                role_name = "admin"
+            elif roles_found:
+                role_name = roles_found[0]
+        logger.debug("User role resolved: role_ids=%s role_name=%s", role_ids, role_name)
 
         # Find matching endpoint access rule
         endpoint_access = find_matching_endpoint_access(role_name, request.path)
