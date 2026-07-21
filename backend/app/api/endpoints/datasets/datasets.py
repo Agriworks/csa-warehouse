@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from pymongo.collection import Collection
 from bson import ObjectId
 from fastapi import APIRouter, HTTPException, Depends, UploadFile, File
+from fastapi.responses import StreamingResponse
 from app.auth.user_auth import get_current_user
 from app.schemas.models import (
     CreateDatasetInformationRequest,
@@ -62,6 +63,44 @@ async def upload_dataset_file(
     except Exception as e:
         raise HTTPException(
             status_code=500, detail=f"Failed to upload file to storage: {str(e)}"
+        )
+
+
+@datasets_router.get("/files/{file_id}/view", operation_id="view_file")
+def view_file(
+    file_id: str,
+    current_user: dict = Depends(get_current_user)
+):
+    try:
+        # Find the file in files_collection
+        file_doc = files_collection.find_one({"_id": ObjectId(file_id)})
+        if not file_doc:
+            raise HTTPException(status_code=404, detail="File record not found")
+            
+        file_location = file_doc.get("file_location")
+        if not file_location:
+            raise HTTPException(status_code=404, detail="File location not found in record")
+            
+        storage_service = get_storage_service()
+        
+        # Get the object stream from storage
+        obj = storage_service.get_object(file_location)
+        
+        filename = os.path.basename(file_location)
+        media_type = file_doc.get("file_type") or "application/octet-stream"
+        
+        return StreamingResponse(
+            obj,
+            media_type=media_type,
+            headers={
+                "Content-Disposition": f"attachment; filename={filename}"
+            }
+        )
+    except Exception as e:
+        if isinstance(e, HTTPException):
+            raise e
+        raise HTTPException(
+            status_code=500, detail=f"Failed to retrieve file from storage: {str(e)}"
         )
 
 
