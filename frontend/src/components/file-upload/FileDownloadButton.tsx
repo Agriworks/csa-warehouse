@@ -30,7 +30,8 @@ const FileDownloadButton = React.forwardRef<
   ) => {
     const theToast = useToast();
 
-    const handleDownload = async () => {
+    const handleDownload = async (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
       try {
         // If accessToken is "", show an error toast
         if (!accessToken || accessToken === "") {
@@ -54,36 +55,33 @@ const FileDownloadButton = React.forwardRef<
           return;
         }
 
-        // // Get the download URL from the API
-        // const response = await getNimbusFileDownloadUrl({
-        //     path: {
-        //         fileId: fileID,
-        //     },
-        //     headers: {
-        //         Authorization: `Bearer ${accessToken}`,
-        //     },
-        // });
+        // Direct download from FastAPI backend to bypass browser CORS / PNA / SSL restrictions
+        const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+        const downloadResponse = await fetch(`${backendUrl}/files/${fileID}/view`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
 
-        const response = {
-          data: "https://example.com/file.csv",
-        };
-
-        if (response.data) {
-          window.open(response.data as string, "_blank");
-        } else {
-          theToast.toast({
-            title: "Error",
-            description: "Failed to get file download URL",
-            variant: "destructive",
-          });
-          console.error("No download URL received");
-          throw new Error("No download URL received");
+        if (!downloadResponse.ok) {
+          const errorText = await downloadResponse.text();
+          throw new Error(errorText || `Download request failed: ${downloadResponse.statusText}`);
         }
+
+        const blob = await downloadResponse.blob();
+        const blobUrl = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = blobUrl;
+        a.download = downloadName.endsWith(".csv") ? downloadName : `${downloadName}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(blobUrl);
       } catch (error) {
-        console.error("Error getting file download URL:", error);
+        console.error("Error downloading file:", error);
         theToast.toast({
           title: "Error",
-          description: "Failed to get file download URL",
+          description: error instanceof Error ? error.message : "Failed to download file",
           variant: "destructive",
         });
       }
@@ -92,6 +90,7 @@ const FileDownloadButton = React.forwardRef<
     return (
       <Button
         ref={ref}
+        type="button"
         variant={variant}
         size={size}
         className={cn("w-full", className)}

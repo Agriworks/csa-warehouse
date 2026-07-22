@@ -46,6 +46,7 @@ services:
     environment:
       MINIO_ROOT_USER: ${MINIO_USERNAME}
       MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+      MINIO_API_CORS_ALLOW_ORIGIN: "*"
     command: server /data/s3 --console-address ":9001"
     restart: unless-stopped
     network_mode: host
